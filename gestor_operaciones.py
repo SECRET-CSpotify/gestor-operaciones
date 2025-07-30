@@ -261,10 +261,15 @@ elif opcion == 'Alertas':
     Consecutivo: {alerta['Consecutivo']}<br>
     Cliente: {alerta['Cliente']}<br>
     Fecha: {alerta['Fecha'].strftime('%A, %d de %B de %Y')}<br>
-    Fecha de Arribo: {alerta['Fecha de Arribo'].strftime('%A, %d de %B de %Y')}
-</div>
 """
-                st.markdown(alerta_html, unsafe_allow_html=True)
+
+if 'Fecha de Arribo' in alerta:
+    alerta_html += f"Fecha de Arribo: {alerta['Fecha de Arribo'].strftime('%A, %d de %B de %Y')}<br>"
+
+alerta_html += "</div>"
+
+st.markdown(alerta_html, unsafe_allow_html=True)
+
         else:
             st.success("✅ Sin alertas próximas.")
     except FileNotFoundError:
