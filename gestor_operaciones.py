@@ -263,8 +263,8 @@ elif opcion == 'Alertas':
     Fecha: {alerta['Fecha'].strftime('%A, %d de %B de %Y')}<br>
 """
 
-if 'Fecha de Arribo' in alerta:
-    alerta_html += f"Fecha de Arribo: {alerta['Fecha de Arribo'].strftime('%A, %d de %B de %Y')}<br>"
+        if 'Fecha de Arribo' in alerta:
+            alerta_html += f"Fecha de Arribo: {alerta['Fecha de Arribo'].strftime('%A, %d de %B de %Y')}<br>"
 
 alerta_html += "</div>"
 
