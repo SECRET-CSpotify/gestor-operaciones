@@ -223,7 +223,6 @@ elif opcion == 'Alertas':
             cert_fletes = llegada - timedelta(days=7)
             mejor_fecha, _, _ = sugerir_mejor_dia(llegada, trm_hoy_input, trm_manana_input)
 
-            # 🚢 Llegada de carga HOY
             if llegada == hoy:
                 alertas.append({
                     'Tipo': '🚢 Llegada de Carga',
@@ -232,7 +231,6 @@ elif opcion == 'Alertas':
                     'Fecha': llegada
                 })
 
-            # 📄 Certificación de Fletes HOY
             if cert_fletes == hoy:
                 alertas.append({
                     'Tipo': '📄 Certificación de Fletes',
@@ -242,7 +240,6 @@ elif opcion == 'Alertas':
                     'Fecha de Arribo': llegada
                 })
 
-            # 💰 Facturación sugerida HOY
             if mejor_fecha != "Sin datos" and mejor_fecha == hoy:
                 alertas.append({
                     'Tipo': '💰 Fecha Facturación',
@@ -263,14 +260,15 @@ elif opcion == 'Alertas':
     Fecha: {alerta['Fecha'].strftime('%A, %d de %B de %Y')}<br>
 """
 
-if 'Fecha de Arribo' in alerta:
-    alerta_html += f"Fecha de Arribo: {alerta['Fecha de Arribo'].strftime('%A, %d de %B de %Y')}<br>"
+                if 'Fecha de Arribo' in alerta:
+                    alerta_html += f"Fecha de Arribo: {alerta['Fecha de Arribo'].strftime('%A, %d de %B de %Y')}<br>"
 
-alerta_html += "</div>"
+                alerta_html += "</div>"
 
-st.markdown(alerta_html, unsafe_allow_html=True)
-
+                st.markdown(alerta_html, unsafe_allow_html=True)
         else:
             st.success("✅ Sin alertas próximas.")
+
     except FileNotFoundError:
         st.warning("No hay operaciones para verificar alertas.")
+
