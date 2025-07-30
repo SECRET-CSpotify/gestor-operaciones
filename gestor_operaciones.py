@@ -5,7 +5,12 @@
 import streamlit as st
 import pandas as pd
 import locale
-locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+
+try:
+    locale.setlocale(locale.LC_TIME, 'es_ES.UTF-8')
+except locale.Error:
+    locale.setlocale(locale.LC_TIME, 'C')  # fallback genérico
+    
 locale.setlocale(locale.LC_TIME, 'Spanish_Spain')
 from datetime import datetime, timedelta
 from scraper import obtener_trm_oficial
