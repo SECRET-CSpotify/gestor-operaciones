@@ -1,3 +1,10 @@
 streamlit
 pandas
 requests
+beautifulsoup4
+Babel
+pytz
+gspread
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
